@@ -242,7 +242,7 @@ static void analog_input_async_init(struct k_work *work) {
     const struct device *dev = data->dev;
     const struct analog_input_config *config = dev->config;
 
-    // LOG_DBG("ANALOG_INPUT async init");
+    LOG_DBG("ANALOG_INPUT async init");
     uint32_t ch_mask = 0;
 
     for (uint8_t i = 0; i < config->io_channels_len; i++) {
