@@ -14,7 +14,7 @@
 #include <zephyr/sys/util.h> // for CLAMP
 
 #include <zephyr/logging/log.h>
-// LOG_MODULE_REGISTER(ANALOG_INPUT, CONFIG_ANALOG_INPUT_LOG_LEVEL);
+LOG_MODULE_REGISTER(ANALOG_INPUT, CONFIG_ANALOG_INPUT_LOG_LEVEL);
 
 #include <zmk/drivers/analog_input.h>
 
@@ -236,13 +236,14 @@ static int enable_set_value(const struct device *dev, bool enable) {
 }
 
 static void analog_input_async_init(struct k_work *work) {
+    LOG_DBG("ANALOG_INPUT async init");
+    return;
     struct k_work_delayable *work_delayable = (struct k_work_delayable *)work;
     struct analog_input_data *data = CONTAINER_OF(work_delayable, 
                                                   struct analog_input_data, init_work);
     const struct device *dev = data->dev;
     const struct analog_input_config *config = dev->config;
 
-    LOG_DBG("ANALOG_INPUT async init");
     uint32_t ch_mask = 0;
 
     for (uint8_t i = 0; i < config->io_channels_len; i++) {
@@ -325,6 +326,7 @@ static void analog_input_async_init(struct k_work *work) {
 
 static int analog_input_init(const struct device *dev) {
     LOG_DBG("analog_input_init");
+    return;
     struct analog_input_data *data = dev->data;
     // const struct analog_input_config *config = dev->config;
     int err = 0;
@@ -340,6 +342,7 @@ static int analog_input_attr_set(const struct device *dev, enum sensor_channel c
                             enum sensor_attribute attr, const struct sensor_value *val) {
 
     LOG_DBG("analog_input_attr_set");
+    return;
     struct analog_input_data *data = dev->data;
     // const struct analog_input_config *config = dev->config;
     int err;
