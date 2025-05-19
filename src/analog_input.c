@@ -324,6 +324,7 @@ static void analog_input_async_init(struct k_work *work) {
 }
 
 static int analog_input_init(const struct device *dev) {
+    LOG_DBG("analog_input_init");
     struct analog_input_data *data = dev->data;
     // const struct analog_input_config *config = dev->config;
     int err = 0;
@@ -337,6 +338,8 @@ static int analog_input_init(const struct device *dev) {
 
 static int analog_input_attr_set(const struct device *dev, enum sensor_channel chan,
                             enum sensor_attribute attr, const struct sensor_value *val) {
+
+    LOG_DBG("analog_input_attr_set");
     struct analog_input_data *data = dev->data;
     // const struct analog_input_config *config = dev->config;
     int err;
@@ -395,6 +398,8 @@ static int analog_input_sample_fetch(const struct device *dev, enum sensor_chann
 
 static int analog_input_channel_get(const struct device *dev, enum sensor_channel chan,
                                     struct sensor_value *val) {
+
+    LOG_DBG("analog_input_channel_get");
     struct analog_input_data *data = dev->data;
     const struct analog_input_config *config = dev->config;
 
