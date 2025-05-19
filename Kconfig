@@ -5,11 +5,11 @@
 # SPDX-License-Identifier: LicenseRef-Nordic-5-Clause
 #
 
-# menuconfig ANALOG_INPUT
-# 	bool "ANALOG_INPUT adc sensor"
-#   select ADC
-# 	help
-# 	  Enable ANALOG_INPUT adc sensor.
+menuconfig ANALOG_INPUT
+	bool "ANALOG_INPUT adc sensor"
+  select ADC
+	help
+	  Enable ANALOG_INPUT adc sensor.
 
 if ANALOG_INPUT
 
