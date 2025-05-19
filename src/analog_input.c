@@ -299,6 +299,7 @@ static void analog_input_async_init(struct k_work *work) {
         .calibrate = true,
     };
 
+    LOG_DBG("CONFIG_ADC_ASYNC");
 #ifdef CONFIG_ADC_ASYNC
     k_poll_signal_init(&data->async_sig);
     struct k_poll_event async_evt = K_POLL_EVENT_INITIALIZER(K_POLL_TYPE_SIGNAL,
@@ -306,6 +307,8 @@ static void analog_input_async_init(struct k_work *work) {
                                                              &data->async_sig);
     data->async_evt = async_evt;
 #endif
+
+    LOG_DBG("finish CONFIG_ADC_ASYNC");
 
     data->ready = true;
 
@@ -322,18 +325,23 @@ static void analog_input_async_init(struct k_work *work) {
         enable_set_value(dev, true);
     }
 
+    LOG_DBG("finish analog_input_init");
+
 }
 
 static int analog_input_init(const struct device *dev) {
     LOG_DBG("analog_input_init");
-    return 0;
+    // return 0;
     struct analog_input_data *data = dev->data;
     // const struct analog_input_config *config = dev->config;
     int err = 0;
 
     data->dev = dev;
     k_work_init_delayable(&data->init_work, analog_input_async_init);
+
+    LOG_DBG("k_work_init_delayable");
     k_work_schedule(&data->init_work, K_MSEC(1));
+    LOG_DBG("k_work_schedule");
 
     return err;
 }
