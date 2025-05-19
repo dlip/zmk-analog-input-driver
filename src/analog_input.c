@@ -292,7 +292,6 @@ static void analog_input_async_init(struct k_work *work) {
     memset(data->as_buff, 0, buff_size);
 
     LOG_DBG("malloc");
-    return;
 
     data->as = (struct adc_sequence){
         .channels = ch_mask,
