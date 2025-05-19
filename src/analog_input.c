@@ -326,7 +326,7 @@ static void analog_input_async_init(struct k_work *work) {
 
 static int analog_input_init(const struct device *dev) {
     LOG_DBG("analog_input_init");
-    return;
+    return 0;
     struct analog_input_data *data = dev->data;
     // const struct analog_input_config *config = dev->config;
     int err = 0;
@@ -342,7 +342,7 @@ static int analog_input_attr_set(const struct device *dev, enum sensor_channel c
                             enum sensor_attribute attr, const struct sensor_value *val) {
 
     LOG_DBG("analog_input_attr_set");
-    return;
+    return 0;
     struct analog_input_data *data = dev->data;
     // const struct analog_input_config *config = dev->config;
     int err;
