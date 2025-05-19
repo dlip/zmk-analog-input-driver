@@ -278,7 +278,6 @@ static void analog_input_async_init(struct k_work *work) {
     }
 
     LOG_DBG("channel loop");
-    return;
 
     uint16_t delta_size = config->io_channels_len * sizeof(int32_t);
     data->delta = malloc(delta_size);
@@ -291,6 +290,9 @@ static void analog_input_async_init(struct k_work *work) {
     uint16_t buff_size = config->io_channels_len * sizeof(uint16_t);
     data->as_buff = malloc(buff_size);
     memset(data->as_buff, 0, buff_size);
+
+    LOG_DBG("malloc");
+    return;
 
     data->as = (struct adc_sequence){
         .channels = ch_mask,
