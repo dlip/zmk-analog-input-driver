@@ -237,7 +237,6 @@ static int enable_set_value(const struct device *dev, bool enable) {
 
 static void analog_input_async_init(struct k_work *work) {
     LOG_DBG("ANALOG_INPUT async init");
-    return;
     struct k_work_delayable *work_delayable = (struct k_work_delayable *)work;
     struct analog_input_data *data = CONTAINER_OF(work_delayable, 
                                                   struct analog_input_data, init_work);
