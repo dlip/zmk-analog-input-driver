@@ -277,6 +277,9 @@ static void analog_input_async_init(struct k_work *work) {
         }
     }
 
+    LOG_DBG("channel loop");
+    return;
+
     uint16_t delta_size = config->io_channels_len * sizeof(int32_t);
     data->delta = malloc(delta_size);
     memset(data->delta, 0, delta_size);
